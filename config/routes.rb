@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  
+  root 'landing_pages#home'
+
+  resources :item_sets
+  resources :items do
+    collection do
+      post :search
+      get :names
+    end
+  end
+  get 'builder' => 'item_sets#new'  
+  get 'landing_pages/home'
+  get 'landing_pages/about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
